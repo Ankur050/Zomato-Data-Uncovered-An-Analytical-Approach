@@ -17,3 +17,21 @@ def handleRate(value):
 df['rate']=df['rate'].apply(handleRate)
 print(df.head())
 
+
+# Insight-1
+# What type of restaurant do the majority of customers roder from ?
+
+sns.countplot(x=df['listed_in(type)'])
+plt.xlabel('Type of restaurant')
+
+#conclusion -- -majority of the people order from dining.
+
+
+#insight-2
+# how many votes has each type of restaurant received from customers?
+group_restaur=df.groupby('listed_in(type)')['votes'].sum()
+result=pd.DataFrame({'votes':group_restaur})
+plt.plot(result,c='green',marker="*")
+plt.xlabel('Type of Restaurant',c='red',size=25)
+plt.ylabel("votes",c="red",size=25)
+
